@@ -73,3 +73,7 @@ forest_model = RandomForestRegressor(random_state=1)
 forest_model.fit(train_X, train_y)
 melb_preds = forest_model.predict(val_X)
 print(mean_absolute_error(val_y, melb_preds))
+
+# save predictions in correct format
+output = pd.DataFrame({'Id': test_data.Id, 'SalePrice': test_preds})
+output.to_csv('submission.csv', index=False)
